@@ -1,11 +1,11 @@
 FROM alpine:latest
 
 LABEL name="tapad"
-LABEL version="1.3"
+LABEL version="1.4"
 LABEL maintainer="https://github.com/officel"
 
-ENV TERRAFORM_VERSION 0.12.19
-ENV PACKER_VERSION 1.5.0
+ENV TERRAFORM_VERSION 0.12.20
+ENV PACKER_VERSION 1.5.1
 
 RUN apk --update add --no-cache ansible py3-pip openssh ca-certificates && \
     pip3 install --upgrade pip botocore boto3 awscli && \
@@ -21,5 +21,5 @@ RUN wget https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER
 
 WORKDIR /home
 
-CMD ["ansible --version"]
+CMD ["/usr/bin/ansible --version"]
 
